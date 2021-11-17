@@ -39,7 +39,7 @@ data "aws_ami" "defaut_latest_ubuntu" {
 resource "aws_security_group" "allow_traffic" {
   name        = "Dynamic_sg_allow_traffic"
   description = "Allow SSH & HTTP via terraform"
-  vpc_id      = data.aws_vpc.default.id
+  vpc_id      = data.aws_vpcs.default.id
 
   dynamic "ingress" {
     for_each = ["80", "443"]
