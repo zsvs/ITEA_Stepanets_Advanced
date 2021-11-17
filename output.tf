@@ -2,6 +2,9 @@
   value = data.aws_availability_zones.available.names
 }
 
+output "Elastic_IP" {
+  value = aws_eip.instance_static_addr.address
+}
 output "data_vpc_ids" {
   value = data.aws_vpc.default.id
 }
