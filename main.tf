@@ -20,7 +20,7 @@ data "aws_availability_zones" "available" {} # Get current availability zones LI
 
 data "aws_region" "current" {} # Get info about current region
 
-data "aws_vpcs" "default" { # Get info about default vpc
+data "aws_vpc" "default" { # Get info about default vpc
   tags = {
     Name = "Default"
   }
@@ -39,7 +39,7 @@ data "aws_ami" "defaut_latest_ubuntu" {
 resource "aws_security_group" "allow_traffic" {
   name        = "Dynamic_sg_allow_traffic"
   description = "Allow SSH & HTTP via terraform"
-  vpc_id      = data.aws_vpcs.default.id
+  vpc_id      = data.aws_vpc.default.id
 
   dynamic "ingress" {
     for_each = ["80", "443"]
