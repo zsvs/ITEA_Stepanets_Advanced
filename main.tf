@@ -71,6 +71,13 @@ resource "aws_security_group" "allow_traffic" {
   }
 }
 
+######################## Elastic IP ########################
+resource "aws_eip" "instance_static_addr" {
+  instance = aws_instance.web_server.id
+  vpc      = true
+}
+
+
 ######################## EC2 instance ########################
 
 resource "aws_instance" "web_server" {
