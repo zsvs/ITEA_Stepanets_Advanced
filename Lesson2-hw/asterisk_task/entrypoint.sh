@@ -1,4 +1,4 @@
-﻿#!/bin/bash
+﻿#!/bin/ash
 mkdir 1
 if [ $? == 0 ]
 then

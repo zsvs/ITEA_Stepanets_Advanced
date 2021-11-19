@@ -7,6 +7,6 @@ RUN git clone https://github.com/nodejs/nodejs.org.git
 
 COPY entrypoint.sh entrypoint.sh
 
-RUN chmod +x entrypoint.sh
+RUN chmod u+x entrypoint.sh
 
 CMD ["sh", "-c", "./entrypoint.sh"]
