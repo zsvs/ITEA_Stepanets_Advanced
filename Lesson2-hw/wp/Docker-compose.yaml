@@ -13,6 +13,8 @@ services:
       WORDPRESS_DB_NAME: exampledb
     volumes:
       - ./wordpress:/var/www/html
+    networks:
+      - webapp
 
   db:
     image: mysql:5.7
@@ -23,3 +25,9 @@ services:
       MYSQL_RANDOM_ROOT_PASSWORD: '1'
     volumes:
       - ./db:/var/lib/mysql
+    networks:
+      - webapp
+
+networks:
+  webapp:
+    driver: bridge
