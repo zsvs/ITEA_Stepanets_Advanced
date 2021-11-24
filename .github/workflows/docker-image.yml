@@ -19,11 +19,9 @@ jobs:
         username: ${{ secrets.DOCKERHUB_USERNAME }}
         password: ${{ secrets.DOCKERHUB_PASS }}
 
-    - name: Build and push
-      id: docker_build
-      uses: docker/build-push-action@v2
-      with:
-        context: ./
-        file: ./Lesson3-hw/Dockerfile
-        push: true
-        tags: ${{ secrets.DOCKERHUB_USERNAME }}/web_httpd:latest
+    - uses: actions/checkout@v2
+    - name: Build the Docker image
+      run: cd Lesson3-hw && docker build . -f Dockerfile -t ${{ secrets.DOCKERHUB_USERNAME }}/web_httpd:latest
+
+    - name: Push docker image to Docker Hub
+      run: docker push ${{ secrets.DOCKERHUB_USERNAME }}/web_httpd:latest
