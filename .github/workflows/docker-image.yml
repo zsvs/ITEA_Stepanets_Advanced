@@ -23,7 +23,7 @@ jobs:
       id: docker_build
       uses: docker/build-push-action@v2
       with:
-        context: ./Lesson3-hw/
-        file: ./Dockerfile
+        context: ./
+        file: ./Lesson3-hw/Dockerfile
         push: true
         tags: ${{ secrets.DOCKERHUB_USERNAME }}/web_httpd:latest
