@@ -1,12 +1,12 @@
 ﻿FROM alpine:latest
-WORKDIR /nodejs
+WORKDIR /myapp
 
 RUN apk update && apk add git npm
 
-RUN git clone https://github.com/nodejs/nodejs.org.git
+COPY entrypoint.sh /bin/entrypoint.sh
 
-COPY entrypoint.sh entrypoint.sh
+RUN chmod u+x /bin/entrypoint.sh
 
-RUN chmod u+x entrypoint.sh
+VOLUME /myapp
 
-CMD ["sh", "-c", "./entrypoint.sh"]
+CMD entrypoint.sh

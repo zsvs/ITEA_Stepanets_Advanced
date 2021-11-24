@@ -1,8 +1,9 @@
-﻿#!/bin/ash
-mkdir 1
+﻿#!/bin/sh
+echo START!
 if [ $? == 0 ]
 then
-  cd /nodejs/nodejs.org
+  git clone https://github.com/nodejs/nodejs.org.git
+  cd nodejs.org
   npm install
   npm start
 fi
