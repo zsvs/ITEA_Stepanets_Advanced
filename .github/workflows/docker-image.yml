@@ -4,11 +4,13 @@ on:
   push:
     branches: [ master ]
     paths:
-    - 'Lesson3-hw/**'
+    - 'Lesson3-hw/Dockerfile'
+    - 'Lesson3-hw/index.html'
   pull_request:
     branches: [ master ]
     paths:
-    - 'Lesson3-hw/**'
+    - 'Lesson3-hw/Dockerfile'
+    - 'Lesson3-hw/index.html'
 
 jobs:
 
