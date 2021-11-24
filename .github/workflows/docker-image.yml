@@ -13,6 +13,12 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+    - name: Login to DockerHub
+      uses: docker/login-action@v1
+      with:
+        username: ${{ secrets.DOCKERHUB_USERNAME }}
+        password: ${{ secrets.DOCKERHUB_PASS }}
+
     - uses: actions/checkout@v2
     - name: Build the Docker image
-      run: docker build . --file Lesson3-hw/Dockerfile --tag web_httpd:latest
+      run: docker build . -f ./Lesson3-hw/Dockerfile -t web_httpd:latest
