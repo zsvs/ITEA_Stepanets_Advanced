@@ -14,7 +14,7 @@ metadata:
 spec:
   containers:
   - name: web-server
-    image: ghostsvsghost/web_httpd:tagname
+    image: ghostsvsghost/web_httpd:latest
     ports:
       - containerPort: 80
 
