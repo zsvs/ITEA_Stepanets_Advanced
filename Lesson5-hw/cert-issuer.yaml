@@ -1,0 +1,16 @@
+﻿#! CRD installation
+# helm install cert-manager jetstack/cert-manager --namespace cert-manager --create-namespace --version v1.6.1  --set installCRDs=true
+---
+apiVersion: cert-manager.io/v1
+kind: Issuer
+metadata:
+  name: selfsigned-issuer
+spec:
+  selfSigned: {}
+---
+apiVersion: cert-manager.io/v1
+kind: ClusterIssuer
+metadata:
+  name: selfsigned-cluster-issuer
+spec:
+  selfSigned: {}

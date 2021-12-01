@@ -1,0 +1,32 @@
+﻿apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: example-ingress
+  annotations:
+    cert-manager.io/cluster-issuer: selfsigned-cluster-issuer
+    #cert-manager.io/issuer: letsencrypt-staging-dns-validation
+    nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+  tls:
+  - hosts:
+    - minikube.svs-devops.click
+    secretName: svs-tls
+  rules:
+    - host: minikube.svs-devops.click
+      http:
+        paths:
+          - path: /v1
+            pathType: Prefix
+            backend:
+              service:
+                name: web-app-svc
+                port:
+                  number: 8080
+          - path: /v2
+            pathType: Prefix
+            backend:
+              service:
+                name: web
+                port:
+                  number: 8080
+

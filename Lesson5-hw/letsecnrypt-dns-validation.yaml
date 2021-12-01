@@ -1,0 +1,40 @@
+﻿apiVersion: cert-manager.io/v1
+kind: Issuer
+metadata:
+  name: letsencrypt-staging-dns-validation
+spec:
+  acme:
+    server: https://acme-staging-v02.api.letsencrypt.org/directory
+    email: stepanezc@gmail.com
+    # Name of a secret used to store the ACME account private key
+    privateKeySecretRef:
+      name: letsencrypt-staging-dns-validation
+
+    # ACME DNS-01 provider configurations
+    solvers:
+    # An empty 'selector' means that this solver matches all domains
+    - selector: {}
+      dns01:
+        cloudDNS:
+          # The ID of the GCP project
+          # reference: https://cert-manager.io/docs/tutorials/acme/dns-validation/
+          project: $PROJECT_ID
+          # This is the secret used to access the service account
+          serviceAccountSecretRef:
+            name: clouddns-dns01-solver-svc-acct
+            key: key.json
+
+    # We only use cloudflare to solve challenges for example.org.
+    # Alternative options such as 'matchLabels' and 'dnsZones' can be specified
+    # as part of a solver's selector too.
+    - selector:
+        dnsNames:
+        - example.org
+      dns01:
+        cloudflare:
+          email: my-cloudflare-acc@example.com
+          # !! Remember to create a k8s secret before
+          # kubectl create secret generic cloudflare-api-key-secret
+          apiKeySecretRef:
+            name: cloudflare-api-key-secret
+            key: api-key
