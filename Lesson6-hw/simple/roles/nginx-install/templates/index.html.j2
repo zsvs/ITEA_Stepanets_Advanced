@@ -1,0 +1,17 @@
+﻿<!DOCTYPE HTML>
+<html>
+    {% block head %}
+    <head>
+        <title>Lesson 6 homework - simple</title>
+        <meta charset="utf-8">
+    </head>
+    {% endblock %}
+    {% block body %}
+    <body>
+        {% block text %}
+        <p>Created by {{ full_name }}</p>
+        <p>{{ nickname }}</>
+        {% endblock %}
+    </body>
+    {% endblock %}
+</html>

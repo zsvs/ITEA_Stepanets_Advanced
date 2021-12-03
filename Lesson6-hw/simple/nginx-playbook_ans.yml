@@ -1,0 +1,4 @@
+- hosts: tag_Name_WebServer
+  become: true
+  roles:
+    - nginx-install

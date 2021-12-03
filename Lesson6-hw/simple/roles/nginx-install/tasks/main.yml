@@ -1,0 +1,34 @@
+---
+# tasks file for nginx-install
+- name: Update apt cache.
+  apt: update_cache=yes
+  changed_when: false
+  tags:
+    - nginx-setup
+
+- name: Install nginx
+  apt:
+    name: "{{ nginx_package_name }}"
+    state: present
+  tags:
+    - nginx-setup
+
+- name: Copy index.html
+  template:
+    src: "{{ nginx_dir_indexfile_template }}"
+    dest: "{{ nginx_index_file_dir_path }}/index.html"
+    owner: "root"
+    group: "root"
+    mode: 0664
+  notify:
+  - restart nginx
+  tags:
+    - nginx-setup
+
+- name: Ensure nginx service is running
+  service:
+    name: nginx
+    state: started
+    enabled: true
+  tags:
+    - nginx-setup

@@ -1,0 +1,5 @@
+[servers]
+ 34.245.121.44
+
+[servers:vars]
+ansible_user=ubuntu

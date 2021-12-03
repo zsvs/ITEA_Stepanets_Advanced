@@ -1,0 +1,5 @@
+---
+# defaults file for nginx-install
+nginx_package_name: "nginx"
+nginx_index_file_dir_path: "/var/www/html"
+nginx_dir_indexfile_template: "index.html.j2"
