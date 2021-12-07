@@ -1,4 +1,4 @@
-- hosts: WebServer
+- hosts: servers
   become: true
   roles:
     - nginx-install
