@@ -1,0 +1,49 @@
+---
+# tasks file for php-install
+- name: Install additional PHP Packages
+  apt: name={{ item }} update_cache=yes state=latest
+  loop: [ 'php-curl', 'php-gd', 'php-intl', 'php-mbstring', 'php-soap', 'php-xml', 'php-xmlrpc', 'php-zip', 'python3-pymysql', 'php-fpm', 'php-mysql' ]
+  tags:
+  - PHP-setup
+
+- name: Create a directory if it does not exist
+  ansible.builtin.file:
+    path: /var/www
+    state: directory
+    mode: '0755'
+  tags:
+  - PHP-setup
+
+- name: Download wordpress
+  shell: cd /var/www && curl -LO https://wordpress.org/latest.tar.gz && tar xzvf latest.tar.gz
+  tags:
+  - PHP-setup
+
+- name: Remove wp-sample-config file
+  ansible.builtin.file:
+    path: /var/www/wordpress/wp-config-sample.php
+    state: absent
+  tags:
+  - PHP-setup
+
+- name: Copy wordpress config file
+  template:
+    src: "wp-config.php.j2"
+    dest: "/var/www/wordpress/wp-config.php"
+    owner: www-data
+    group: www-data
+  notify:
+  - Reload Nginx
+  tags:
+  - PHP-setup
+
+- name: Dump wordpress database
+  mysql_db:
+    login_user: "{{ wordpress_user_name }}"
+    login_password: "{{ wordpress_user_password }}"
+    state: dump
+    name: wordpress
+    target: /var/www/wordpress/wp_dump.sql
+  tags:
+  - PHP-setup
+  - Dump_wp_db

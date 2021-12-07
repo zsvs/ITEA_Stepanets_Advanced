@@ -1,0 +1,6 @@
+---
+# defaults file for php-install
+mysql_db_name: "wordpress"
+mysql_db_host: "localhost"
+wordpress_user_name: "wordpress-user"
+wordpress_user_password: "wordpress-password"

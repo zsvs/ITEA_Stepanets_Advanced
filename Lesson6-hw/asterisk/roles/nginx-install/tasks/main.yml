@@ -1,0 +1,57 @@
+---
+# tasks file for nginx-install
+- name: Install Prerequisites
+  apt: name={{ item }} update_cache=yes state=latest force_apt_get=yes
+  loop: [ 'aptitude', 'python3', 'python3-pip']
+  tags:
+  - nginx-setup
+
+- name: Install Prerequisites PyMySQL
+  pip:
+    name: PyMySQL
+
+- name: Install Nginx Packages
+  apt: name={{ item }} update_cache=yes state=latest
+  loop: [ 'nginx' ]
+  tags:
+  - nginx-setup
+
+- name: Sets Nginx conf file
+  template:
+    src: "nginx.conf.j2"
+    dest: "/etc/nginx/nginx.conf"
+    owner: root
+    group: root
+    mode: 0644
+  tags:
+  - nginx-setup
+
+- name: Sets wp vhost conf file
+  template:
+    src: "wordpress.conf.j2"
+    dest: "/etc/nginx/sites-available/{{ http_conf }}"
+    owner: root
+    group: root
+    mode: 0644
+  tags:
+  - nginx-setup
+
+- name: Create a symbolic link
+  ansible.builtin.file:
+    src: "/etc/nginx/sites-available/{{ http_conf }}"
+    dest: "/etc/nginx/sites-enabled/{{ http_conf }}"
+    owner:  root
+    group:  root
+    state: link
+  notify:
+  - Reload Nginx
+  tags:
+  - nginx-setup
+
+- name: Removes "default" site
+  file:
+    path: "/etc/nginx/sites-enabled/default"
+    state: absent
+  notify: Reload Nginx
+  tags:
+  - nginx-setup

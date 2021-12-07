@@ -1,0 +1,7 @@
+---
+# handlers file for php-install
+- name: Reload Nginx
+  service:
+    name: nginx
+    state: reloaded
+

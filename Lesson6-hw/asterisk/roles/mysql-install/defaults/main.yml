@@ -1,0 +1,6 @@
+---
+# defaults file for mysql-install
+mysql_root_name: "root"
+mysql_root_password: "mysql_root_password"
+wordpress_user_name: "wordpress-user"
+wordpress_user_password: "wordpress-password"

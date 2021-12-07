@@ -1,0 +1,6 @@
+- hosts: webservers
+  become: true
+  roles:
+  - nginx-install
+  - mysql-install
+  - php-install

@@ -1,0 +1,5 @@
+---
+# defaults file for nginx-install
+http_host: "wp.svs-devops.click"
+http_conf: "wordpress.conf"
+http_port: "80"
