@@ -3,3 +3,6 @@
 
 Lesson3 image build and push action:
 [![Docker Image CI](https://github.com/zsvs/ITEA_Stepanets_Advanced/actions/workflows/docker-image.yml/badge.svg?branch=master&event=push)](https://github.com/zsvs/ITEA_Stepanets_Advanced/actions/workflows/docker-image.yml)
+
+Telegram weather bot image build and push action:
+[![Docker Image CI](https://github.com/zsvs/ITEA_Stepanets_Advanced/actions/workflows/telegram-weather-bot-docker-build.yml/badge.svg?branch=master&event=push)](https://github.com/zsvs/ITEA_Stepanets_Advanced/actions/workflows/telegram-weather-bot-docker-build.yml)
