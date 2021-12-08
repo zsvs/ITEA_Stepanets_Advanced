@@ -19,7 +19,7 @@ def get_text_messages(message):
       NewWeatherAPI.SetCity(message.text)
       NewWeatherAPI.CallAPI()
       Result = NewWeatherAPI.GetAnswer()
-      bot.send_message(message.from_user.id, " Погода в {0}: {1}\nТемература: {2}°C\nВлажность{3}%\nСкорость ветра: {4} м/с\nВидимость: {5}м".format(message.text, translator.translate(Result["weather"][0]["description"]), round(float(Result["main"]["temp"]) - 273.15), Result["main"]["humidity"], Result["wind"]["speed"], Result["visibility"]))
+      bot.send_message(message.from_user.id, " Погода в {0}: {1}\nТемература: {2}°C\nВлажность: {3}%\nСкорость ветра: {4} м/с\nВидимость: {5}м".format(message.text, translator.translate(Result["weather"][0]["description"]), round(float(Result["main"]["temp"]) - 273.15), Result["main"]["humidity"], Result["wind"]["speed"], Result["visibility"]))
   else:
       bot.send_message(message.from_user.id, "Я тебя не понимаю. Напиши /help.")
 
