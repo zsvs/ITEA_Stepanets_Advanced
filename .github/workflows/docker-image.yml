@@ -6,11 +6,13 @@ on:
     paths:
     - 'Lesson3-hw/Dockerfile'
     - 'Lesson3-hw/index.html'
+    - 'Lesson7-hw/tg-bot/my-bot/Dockerfile'
   pull_request:
     branches: [ master ]
     paths:
     - 'Lesson3-hw/Dockerfile'
     - 'Lesson3-hw/index.html'
+    - 'Lesson7-hw/tg-bot/my-bot/Dockerfile'
 
 jobs:
 
@@ -28,6 +30,10 @@ jobs:
     - uses: actions/checkout@v2
     - name: Build the Docker image
       run: cd Lesson3-hw && docker build . -f Dockerfile -t ${{ secrets.DOCKERHUB_USERNAME }}/web_httpd:latest
+
+    - uses: actions/checkout@v2
+    - name: Build the Docker image
+      run: cd Lesson7-hw/tg-bot/my-bot/ && docker build . -f Dockerfile -t ${{ secrets.DOCKERHUB_USERNAME }}/pytgweatherbot:latest
 
     - name: Push docker image to Docker Hub
       run: docker push ${{ secrets.DOCKERHUB_USERNAME }}/web_httpd:latest

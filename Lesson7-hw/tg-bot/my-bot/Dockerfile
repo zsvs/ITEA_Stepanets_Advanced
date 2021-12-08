@@ -1,6 +1,6 @@
 ﻿FROM python:latest
 
-WORKDIR /bot-app
+WORKDIR /tg-weather-bot
 
 COPY requirements.txt requirements.txt
 RUN pip3 install -r requirements.txt
