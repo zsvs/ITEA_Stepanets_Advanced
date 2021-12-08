@@ -28,4 +28,4 @@ jobs:
       run: cd Lesson7-hw/tg-bot/my-bot/ && docker build . -f Dockerfile -t ${{ secrets.DOCKERHUB_USERNAME }}/pytgweatherbot:latest
 
     - name: Push docker image to Docker Hub
-      run: docker push ${{ secrets.DOCKERHUB_USERNAME }}/pytgweatherbotlatest
+      run: docker push ${{ secrets.DOCKERHUB_USERNAME }}/pytgweatherbot:latest
