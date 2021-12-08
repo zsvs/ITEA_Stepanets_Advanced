@@ -4,11 +4,11 @@ on:
   push:
     branches: [ master ]
     paths:
-    - 'Lesson7-hw/tg-bot/my-bot/'
+    - 'Lesson7-hw/'
   pull_request:
     branches: [ master ]
     paths:
-    - 'Lesson7-hw/tg-bot/my-bot/'
+    - 'Lesson7-hw/'
 
 jobs:
 
