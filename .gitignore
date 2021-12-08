@@ -3,4 +3,5 @@
 db/
 wordpress/
 sample.txt
-
+Lesson7-hw/tg-bot/*
+!Lesson7-hw/tg-bot/my-bot
