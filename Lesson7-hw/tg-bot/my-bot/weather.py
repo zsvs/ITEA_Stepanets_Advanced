@@ -41,7 +41,3 @@ class WeatherAPI:
         return json.loads(self.__Answer.content)
 
 NewWeatherAPI = WeatherAPI()
-#NewWeatherAPI.SetCity("Tomsk")
-#NewWeatherAPI.CallAPI()
-#Ans = NewWeatherAPI.GetAnswer()
-#print(round(float(Ans["main"]["temp"]) - 273.15))
