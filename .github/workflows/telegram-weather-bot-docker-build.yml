@@ -4,12 +4,17 @@ on:
   push:
     branches: [ master ]
     paths:
+    - 'Lesson7-hw/tg-bot/my-bot/*.py'
+    - 'Lesson7-hw/tg-bot/my-bot/requirements.txt'
     - 'Lesson7-hw/tg-bot/my-bot/Dockerfile'
     - 'Lesson7-hw/tg-bot/my-bot/README.md'
   pull_request:
     branches: [ master ]
     paths:
+    - 'Lesson7-hw/tg-bot/my-bot/*.py'
+    - 'Lesson7-hw/tg-bot/my-bot/requirements.txt'
     - 'Lesson7-hw/tg-bot/my-bot/Dockerfile'
+    - 'Lesson7-hw/tg-bot/my-bot/README.md'
 
 jobs:
 
