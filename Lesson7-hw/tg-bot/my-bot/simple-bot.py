@@ -22,7 +22,7 @@ def get_text_messages(message):
       Result = NewWeatherAPI.GetAnswer()
       print(Result["cod"]) #! Debug info
       bot.send_message(message.from_user.id, " Погода в {0}: {1}\nТемература: {2}°C\nВлажность: {3}%\nСкорость ветра: {4} м/с\nВидимость: {5}м".format(message.text, translator.translate(Result["weather"][0]["description"]), round(float(Result["main"]["temp"]) - 273.15), Result["main"]["humidity"], Result["wind"]["speed"], Result["visibility"]))
-    except KeyError:
+    except KeyError: #! In case of API response is empty
       bot.send_message(message.from_user.id, "Нету такого города! Попробуйте ввести другое название.")
   else:
     bot.send_message(message.from_user.id, "Такой команды нету. Напишите /help.")
