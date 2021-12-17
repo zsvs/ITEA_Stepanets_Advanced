@@ -73,4 +73,3 @@ def lambda_handler(event, context):
     return {
         'statusCode': 200
     }
-#https://api.telegram.org/bot5032241555:AAHxEAhvuZKeimwjjJNLYCuRTSzU0ttAmqI/setWebHook?url=https://1dguojpd5c.execute-api.eu-west-1.amazonaws.com/default/PyTgWeatherBot
