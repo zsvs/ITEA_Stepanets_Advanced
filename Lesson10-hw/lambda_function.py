@@ -65,7 +65,7 @@ def lambda_handler(event, context):
             NewWeatherAPI.CallAPI()
             Result = NewWeatherAPI.GetAnswer()
             print(Result["cod"]) #! Debug info
-            send_message(chat_id, "Напишите: Погода"" Погода в {0}: {1}\nТемература: {2}°C\nВлажность: {3}%\nСкорость ветра: {4} м/с\nВидимость: {5}м".format(reply, translator.translate(Result["weather"][0]["description"]), round(float(Result["main"]["temp"]) - 273.15), Result["main"]["humidity"], Result["wind"]["speed"], Result["visibility"]))
+            send_message(chat_id, " Погода в {0}: {1}\nТемература: {2}°C\nВлажность: {3}%\nСкорость ветра: {4} м/с\nВидимость: {5}м".format(reply, translator.translate(Result["weather"][0]["description"]), round(float(Result["main"]["temp"]) - 273.15), Result["main"]["humidity"], Result["wind"]["speed"], Result["visibility"]))
         except KeyError: #! In case of API response is empty
             send_message(chat_id, "Нету такого города! Попробуйте ввести другое название.")
     else:
@@ -73,3 +73,4 @@ def lambda_handler(event, context):
     return {
         'statusCode': 200
     }
+#https://api.telegram.org/bot5032241555:AAHxEAhvuZKeimwjjJNLYCuRTSzU0ttAmqI/setWebHook?url=https://1dguojpd5c.execute-api.eu-west-1.amazonaws.com/default/PyTgWeatherBot
